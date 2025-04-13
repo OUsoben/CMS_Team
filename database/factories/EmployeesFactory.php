@@ -19,7 +19,7 @@ class EmployeesFactory extends Factory
     public function definition(): array
     {
         return [
-            'first_name' => $this->faker->firstName(),
+        'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
             'department_id'=> Departments::factory(),
             'position_id'=> Positions::factory(),
@@ -29,6 +29,7 @@ class EmployeesFactory extends Factory
             'address' => $this->faker->address(),
             // Add any other fields you want to generate here
             //
+
         ];
     }
 }

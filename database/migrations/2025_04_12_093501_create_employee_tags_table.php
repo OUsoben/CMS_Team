@@ -16,6 +16,12 @@ return new class extends Migration
             $table->string('name');
             $table->timestamps();
         });
+        Schema::create('employee_tags_map', function (Blueprint $table) {
+            $table->id();
+            $table->foreignIdFor(\App\Models\Employees::class, 'employees_id')->constrained()->cascadeOnDelete();
+            $table->foreignIdFor(\App\Models\EmployeeTag::class)->constrained()->cascadeOnDelete();
+            $table->timestamps();
+        });
     }
 
     /**
@@ -24,5 +30,6 @@ return new class extends Migration
     public function down(): void
     {
         Schema::dropIfExists('employee_tags');
+        Schema::dropIfExists('employee_tags_map');
     }
 };
