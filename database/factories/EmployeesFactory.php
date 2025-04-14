@@ -31,9 +31,6 @@ class EmployeesFactory extends Factory
             'phone' => $this->faker->phoneNumber(),
             'hire_date' => $this->faker->date(),
             'address' => $this->faker->address(),
-            // Add any other fields you want to generate here
-            //
-
         ];
     }
 }
