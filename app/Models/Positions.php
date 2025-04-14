@@ -12,7 +12,7 @@ class Positions extends Model
     protected $table = 'positions';
 
     protected $fillable = [
-        'name',
+        'title',
     ];
 
     public function employees()
