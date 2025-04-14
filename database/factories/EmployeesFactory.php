@@ -18,11 +18,15 @@ class EmployeesFactory extends Factory
      */
     public function definition(): array
     {
+        $genders = ['m', 'f', 'o'];
+        $randomGender = $genders[array_rand($genders)];
+
         return [
-        'first_name' => $this->faker->firstName(),
+            'first_name' => $this->faker->firstName(),
             'last_name' => $this->faker->lastName(),
-            'department_id'=> Departments::factory(),
-            'position_id'=> Positions::factory(),
+            'gender' => $randomGender,
+            'department_id' => Departments::factory(),
+            'position_id' => Positions::factory(),
             'email' => $this->faker->unique()->safeEmail(),
             'phone' => $this->faker->phoneNumber(),
             'hire_date' => $this->faker->date(),

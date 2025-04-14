@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->id();
             $table->string('first_name');
             $table->string('last_name');
+            $table->char('gender');
             $table->foreignIdFor(\App\Models\Departments::class ,'department_id')->constrained()->cascadeOnDelete();
             $table->foreignIdFor(\App\Models\Positions::class , 'position_id')->constrained()->cascadeOnDelete();
             $table->string('email')->unique();
