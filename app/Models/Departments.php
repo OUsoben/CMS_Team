@@ -18,6 +18,6 @@ class Departments extends Model
     ];
     public function employees()
     {
-        return $this->hasMany(Employees::class);
+        // return $this->hasMany(Employees::class);
     }
 }

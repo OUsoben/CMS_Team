@@ -23,5 +23,6 @@ class DatabaseSeeder extends Seeder
         ]);
 
         Employees::factory(10)->create();
+
     }
 }
