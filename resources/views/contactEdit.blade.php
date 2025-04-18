@@ -6,28 +6,10 @@
 
     <x-slot:MainContent>
         <div class="">
-            <h1 class="text-4xl font-bold mb-4"> Contact List</h1>
+            <h1 class="text-4xl font-bold mb-4"> Contact Edit</h1>
 
-            <nav>
-                <div class="container mx-auto flex justify-start space-x-4">
-                    <div class="bg-purple-500 py-2 px-4 rounded">
-                        <a href="#" class="hover:text-gray-200">Dashboard</a>
-                    </div>
-                    <div class="bg-purple-500 py-2 px-4 rounded">
-                        <a href="#" class="hover:text-gray-200">Contacts</a>
-                    </div>
-                    <div class="bg-purple-500 py-2 px-4 rounded">
-                        <a href="#" class="hover:text-gray-200">Settings</a>
-                    </div>
-                </div>
-            </nav>
-
-            <br><br>
 
             <div class="flex items-center justify-between mb-4">
-                <button class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-                    Add Contact
-                </button>
                 <div class="flex items-center">
                     <button
                         class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow">
