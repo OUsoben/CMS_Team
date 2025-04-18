@@ -16,7 +16,7 @@
             <p class="text-lg">This is a simple add contact layout using Blade components.</p>
         </div> --}}
 
-        <form action="/addcontact" method="POST">
+        <form action="/addcontact" method="POST" id="mainForm">
             @csrf
             <div class="space-y-12">
 
@@ -263,13 +263,22 @@
         </script>
 
         <script>
+
+            var departmentId;
+            var positionId;
+
             document.addEventListener('DOMContentLoaded', () => {
-                function comboBox(searchInputId, dropdownId) {
-                    const searchInput = document.getElementById(searchInputId);
-                    const dropdown = document.getElementById(dropdownId);
+                function comboBox(name) {
+                    const searchInput = document.getElementById(name + '_search');
+                    const dropdown = document.getElementById(name + '_list');
                     const options = dropdown.querySelectorAll('li');
 
-                    searchInput.value = options[0].getAttribute('data-value');
+                    searchInput.value = options[0].textContent;
+                    if (name === 'department') {
+                        departmentId = options[0].getAttribute('data-value');
+                    } else if (name === 'position') {
+                        positionId = options[0].getAttribute('data-value');
+                    }
 
                     searchInput.addEventListener('focus', () => {
                         options.forEach(option => {
@@ -298,7 +307,12 @@
                     options.forEach(option => {
                         option.addEventListener('click', () => {
                             // searchInput.value = option.textContent;
-                            searchInput.value = option.getAttribute('data-value');
+                            searchInput.value = option.textContent;
+                            if (name === 'department') {
+                                departmentId = option.getAttribute('data-value');
+                            } else if (name === 'position') {
+                                positionId = option.getAttribute('data-value');
+                            }
                             dropdown.style.display = 'none';
                         });
                     });
@@ -310,8 +324,15 @@
                     });
                 }
 
-                comboBox('department_search', 'department_list');
-                comboBox('position_search', 'position_list');
+                comboBox('department');
+                comboBox('position');
+
+                const mainForm = document.querySelector('#mainForm');
+                
+                mainForm.addEventListener('submit', (event) => {
+                    document.querySelector('input[name="department_search"]').value = departmentId;
+                    document.querySelector('input[name="position_search"]').value = positionId;
+                });
 
             });
         </script>
