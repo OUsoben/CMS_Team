@@ -61,14 +61,14 @@
                             </div>
                         </div>
 
-                        <div class="sm:col-span-2 sm:col-start-1">
+                        {{-- <div class="sm:col-span-2 sm:col-start-1">
                             <label for="department_id"
                                 class="block text-sm/6 font-medium text-gray-900">Departments</label>
                             <div class="mt-2 grid grid-cols-1">
                                 <select id="department_id" name="department_id" autocomplete="department_id-name"
                                     class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     @foreach ($departments as $department)
-                                        <option value="{{ $department->id }}">{{ $department->name }}</option>
+                                    <option value="{{ $department->id }}">{{ $department->name }}</option>
                                     @endforeach
                                 </select>
                                 <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
@@ -78,15 +78,67 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
+                        </div> --}}
+
+                        <div class="sm:col-span-2 sm:col-start-1">
+                            <label for="department_search"
+                                class="block text-sm/6 font-medium text-gray-900">Departments</label>
+                            <div class="mt-2 relative">
+                                <!-- Input field for typing -->
+                                <input type="text" id="department_search" name="department_search"
+                                    class="w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    placeholder="Search departments..." autocomplete="off" />
+                                {{-- <input type="text"> --}}
+                                <!-- Dropdown list -->
+                                <ul id="department_list"
+                                    class="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto hidden">
+                                    <div>
+                                        <button id="openAddDepartmentModal" type="button"
+                                            class="w-full px-3 py-2 text-gray-900 hover:bg-indigo-600 hover:text-white cursor-pointer text-left">
+                                            + Add a department
+                                        </button>
+                                    </div>
+                                    @foreach ($departments as $department)
+                                        <li class="px-3 py-2 text-gray-900 hover:bg-indigo-600 hover:text-white cursor-pointer"
+                                            data-value="{{ $department->id }}">{{ $department->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
 
                         <div class="sm:col-span-2">
+                            <label for="position_search"
+                                class="block text-sm/6 font-medium text-gray-900">Positions</label>
+                            <div class="mt-2 relative">
+                                <!-- Input field for typing -->
+                                <input type="text" id="position_search" name="position_search"
+                                    class="w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
+                                    placeholder="Search positions..." autocomplete="off" />
+                                {{-- <input type="text"> --}}
+                                <!-- Dropdown list -->
+                                <ul id="position_list"
+                                    class="absolute z-10 mt-1 w-full bg-white border border-gray-300 rounded-md shadow-lg max-h-60 overflow-auto hidden">
+                                    <div>
+                                        <button id="openAddPositionModal" type="button"
+                                            class="w-full px-3 py-2 text-gray-900 hover:bg-indigo-600 hover:text-white cursor-pointer text-left">
+                                            + Add a position
+                                        </button>
+                                    </div>
+                                    @foreach ($positions as $position)
+                                        <li class="px-3 py-2 text-gray-900 hover:bg-indigo-600 hover:text-white cursor-pointer"
+                                            data-value="{{ $position->id }}">{{ $position->title }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+
+                        {{-- <div class="sm:col-span-2">
                             <label for="position_id" class="block text-sm/6 font-medium text-gray-900">Positions</label>
                             <div class="mt-2 grid grid-cols-1">
                                 <select id="position_id" name="position_id" autocomplete="position_id"
                                     class="col-start-1 row-start-1 w-full appearance-none rounded-md bg-white py-1.5 pr-8 pl-3 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                                     @foreach ($positions as $position)
-                                        <option value="{{ $position->id }}">{{ $position->title }}</option>
+                                    <option value="{{ $position->id }}">{{ $position->title }}</option>
                                     @endforeach
                                 </select>
                                 <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
@@ -96,7 +148,7 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                        </div>
+                        </div> --}}
 
                         {{-- <div class="sm:col-span-2 sm:col-start-1">
                             <label for="department_name"
@@ -151,7 +203,7 @@
 
                                 <input datepicker id="default-datepicker" type="text"
                                     class="col-start-1 row-start-1 block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6"
-                                    placeholder="Select date" datepicker-orientation="top left">
+                                    placeholder="Select date" datepicker-orientation="top left" name="hired_date" />
                                 <svg class="pointer-events-none col-start-1 row-start-1 mr-2 size-5 self-center justify-self-end text-gray-500 sm:size-4"
                                     viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" data-slot="icon">
                                     <path fill-rule="evenodd"
@@ -163,6 +215,17 @@
                         </div>
                     </div>
 
+                    <div class="sm:col-span-4 mt-5">
+                        <label for="address" class="block text-sm/6 font-medium text-gray-900">Address</label>
+                        <div class="mt-2">
+                            <input id="address" name="address" type="text" autocomplete="address"
+                                value="{{ $faker->streetAddress }}, {{ $faker->city }}, {{ $faker->state }}, {{ $faker->country }}, {{ $faker->postcode }}"
+                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1
+                            -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2
+                            focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="mt-6 flex items-center justify-end gap-x-6">
@@ -170,7 +233,14 @@
                     <button type="submit"
                         class="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-xs hover:bg-indigo-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Save</button>
                 </div>
+
+
         </form>
+
+        @include('contact.contactCreate.modals.addToColumn', ['name' => 'department'])
+        @include('contact.contactCreate.modals.addToColumn', ['name' => 'position'])
+
+
 
         <script>
 
@@ -189,8 +259,108 @@
                 datepicker.style.left = datepicker_input_pos.left + 'px';
               });
             }); */
-          
-          </script>
 
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                function comboBox(searchInputId, dropdownId) {
+                    const searchInput = document.getElementById(searchInputId);
+                    const dropdown = document.getElementById(dropdownId);
+                    const options = dropdown.querySelectorAll('li');
+
+                    searchInput.value = options[0].getAttribute('data-value');
+
+                    searchInput.addEventListener('focus', () => {
+                        options.forEach(option => {
+                            option.style.display = 'block';
+                        });
+                        dropdown.style.display = 'block';
+                    });
+
+                    searchInput.addEventListener('input', () => {
+                        const query = searchInput.value.toLowerCase();
+                        let hasVisibleOptions = false;
+
+                        options.forEach(option => {
+                            const text = option.textContent.toLowerCase();
+                            if (text.includes(query)) {
+                                option.style.display = 'block';
+                                hasVisibleOptions = true;
+                            } else {
+                                option.style.display = 'none';
+                            }
+                        });
+
+                        dropdown.style.display = hasVisibleOptions ? 'block' : 'none';
+                    });
+
+                    options.forEach(option => {
+                        option.addEventListener('click', () => {
+                            // searchInput.value = option.textContent;
+                            searchInput.value = option.getAttribute('data-value');
+                            dropdown.style.display = 'none';
+                        });
+                    });
+
+                    document.addEventListener('click', (event) => {
+                        if (!dropdown.contains(event.target) && event.target !== searchInput) {
+                            dropdown.style.display = 'none';
+                        }
+                    });
+                }
+
+                comboBox('department_search', 'department_list');
+                comboBox('position_search', 'position_list');
+
+            });
+        </script>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                function allAboutModals(modalId, openButton, closeButton, cancelButton) {
+
+                    const modal = document.getElementById(modalId);
+                    const openModalButton = document.getElementById(openButton);
+                    const closeModalButton = document.getElementById(closeButton);
+                    const cancelModalButton = document.getElementById(cancelButton);
+
+                    // Open modal
+                    openModalButton.addEventListener('click', () => {
+                        modal.classList.remove('hidden');
+                    });
+
+                    // Close modal
+                    closeModalButton.addEventListener('click', () => {
+                        modal.classList.add('hidden');
+                    });
+
+                    // Cancel button closes modal
+                    cancelModalButton.addEventListener('click', () => {
+                        modal.classList.add('hidden');
+                    });
+
+                    // Close modal when clicking outside the modal content
+                    modal.addEventListener('click', (event) => {
+                        if (event.target === modal) {
+                            modal.classList.add('hidden');
+                        }
+                    });
+                }
+
+                allAboutModals('addDepartmentModal', 'openAddDepartmentModal', 'closeAddDepartmentModal', 'cancelAddDepartmentModal');
+                allAboutModals('addPositionModal', 'openAddPositionModal', 'closeAddPositionModal', 'cancelAddPositionModal');
+            });
+
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const defaultDatepicker = document.querySelector('#default-datepicker');
+
+                defaultDatepicker.value = '01/01/2025';
+
+            });
+
+        </script>
     </x-slot:MainContent>
 </x-layout>

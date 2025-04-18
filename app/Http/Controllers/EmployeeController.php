@@ -16,10 +16,11 @@ class EmployeeController extends Controller
         $contact->last_name = $request->input('last_name');
         $contact->gender = $request->input('gender');
         $contact->email = $request->input('email');
-        $contact->department_id = $request->input('department_id');
-        $contact->position_id = $request->input('position_id');
+        $contact->department_id = $request->input('department_search');
+        $contact->position_id = $request->input('position_search');
         $contact->hire_date = $request->input('hired_date');
         $contact->phone = $request->input('phone_number');
+        $contact->address = $request->input('address');
 
         $contact->save();
 
