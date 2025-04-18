@@ -33,4 +33,24 @@ class EmployeesFactory extends Factory
             'address' => $this->faker->address(),
         ];
     }
+
+    public function withDefault($num): EmployeesFactory
+    {
+        $genders = ['m', 'f', 'o'];
+        $randomGender = $genders[array_rand($genders)];
+
+        return $this->state([
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'gender' => $randomGender,
+            'department_id' => $num,
+            'position_id' => $num,
+            'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->phoneNumber(),
+            'hire_date' => $this->faker->date(),
+            'address' => $this->faker->address(),
+        ]);
+
+    }
+
 }
