@@ -15,7 +15,7 @@
     <div class="flex">
         <!-- Sidebar -->
         <div
-            class="relative flex {{-- h-[calc(100vh-2rem)] --}} h-auto w-full max-w-[20rem] flex-col bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
+            class="relative flex h-[calc(100vh-0rem)]  w-full max-w-[20rem] flex-col bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
             <div class="p-4 mb-2">
                 <h5
                     class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
@@ -118,9 +118,6 @@
 
     </div>
 
-    <footer class="text-white bg-green-600 text-center">
-        © 2025 Web Development Team. All rights reserved.
-    </footer>
 
 </body>
 

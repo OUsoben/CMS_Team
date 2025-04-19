@@ -37,11 +37,11 @@ Route::get('/editcontact', function () {
     return view('contactEdit');
 });
 Route::get('/contactlist', function () {
-    // Fetch all employees with their related department and position
-    $employees = Employees::with(['department', 'position'])->paginate(8);
+    $departments = Departments::get();
+    // dd($departments);
     $departmentCount = Departments::count();
     return view('contactList', [
-        'employees' => $employees,
+        'departments' => $departments,
         'departmentCount' => $departmentCount
     ]);
 });
