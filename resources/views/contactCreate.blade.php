@@ -220,7 +220,7 @@
                         <div class="mt-2">
                             <input id="address" name="address" type="text" autocomplete="address"
                                 value="{{ $faker->streetAddress }}, {{ $faker->city }}, {{ $faker->state }}, {{ $faker->country }}, {{ $faker->postcode }}"
-                            class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1
+                                class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1
                             -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2
                             focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                         </div>
@@ -273,6 +273,18 @@
                     const dropdown = document.getElementById(name + '_list');
                     const options = dropdown.querySelectorAll('li');
 
+                    if (options.length == 0) {
+                        searchInput.addEventListener('focus', () => {
+                            dropdown.style.display = 'block';
+                        });
+                        document.addEventListener('click', (event) => {
+                            if (!dropdown.contains(event.target) && event.target !== searchInput) {
+                                dropdown.style.display = 'none';
+                            }
+                        });
+                        return;
+                    }
+
                     searchInput.value = options[0].textContent;
                     if (name === 'department') {
                         departmentId = options[0].getAttribute('data-value');
@@ -281,9 +293,11 @@
                     }
 
                     searchInput.addEventListener('focus', () => {
+
                         options.forEach(option => {
                             option.style.display = 'block';
                         });
+
                         dropdown.style.display = 'block';
                     });
 
@@ -328,7 +342,7 @@
                 comboBox('position');
 
                 const mainForm = document.querySelector('#mainForm');
-                
+
                 mainForm.addEventListener('submit', (event) => {
                     document.querySelector('input[name="department_search"]').value = departmentId;
                     document.querySelector('input[name="position_search"]').value = positionId;
