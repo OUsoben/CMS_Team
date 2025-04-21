@@ -34,7 +34,15 @@ Route::post('/addposition', function () {
 });
 
 Route::get('/editcontact', function () {
-    return view('contactEdit');
+    $employees = Employees::with(['department', 'position'])->get();
+    $departments = Departments::all();
+    $positions = Positions::all();
+    // dd($employees);
+    return view('contactEdit', [
+        'employees' => $employees,
+        'departments' => $departments,
+        'positions' => $positions
+    ]);
 });
 Route::get('/contactlist', function () {
     $departments = Departments::get();

@@ -1,3 +1,20 @@
+@php
+    $i = 1;
+
+    function findDeOrPos($id, $arr)
+    {
+        foreach ($arr as $item) {
+            if ($item->id == $id) {
+                if (isset($item->title)) {
+                    return $item->title;
+                }
+                return $item->name;
+            }
+        }
+        return null;
+    }
+@endphp
+
 <x-layout>
 
     <x-slot:title>
@@ -39,19 +56,19 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @for ($i = 1; $i <= 14; $i++)
+                    @foreach ($employees as $employee)
                         <tr>
-                            <td class="border border-gray-300 p-2">{{ $i }}</td>
-                            <td class="border border-gray-300 p-2"></td>
-                            <td class="border border-gray-300 p-2"></td>
-                            <td class="border border-gray-300 p-2"></td>
-                            <td class="border border-gray-300 p-2"></td>
-                            <td class="border border-gray-300 p-2"></td>
+                            <td class="border border-gray-300 p-2">{{ $i++ }}</td>
+                            <td class="border border-gray-300 p-2">{{ $employee->first_name }}</td>
+                            <td class="border border-gray-300 p-2">{{ $employee->last_name }}</td>
+                            <td class="border border-gray-300 p-2">{{ findDeOrPos($employee->department_id, $departments) }}</td>
+                            <td class="border border-gray-300 p-2">{{ findDeOrPos($employee->position_id, $positions) }}</td>
+                            <td class="border border-gray-300 p-2">{{ $employee->email }}</td>
                             <td class="border border-gray-300 p-2 text-center">
                                 <span>&#9776;</span>
                             </td>
                         </tr>
-                    @endfor
+                    @endforeach
                 </tbody>
             </table>
         </div>
