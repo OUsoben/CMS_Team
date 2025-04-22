@@ -27,5 +27,6 @@
         <div class="flex justify-center items-center mt-6">
             {{ $departments->links() }}
         </div>
+
     </x-slot:MainContent>
 </x-layout>

@@ -26,4 +26,29 @@ class EmployeeController extends Controller
 
         return redirect('/contactlist')->with('success', 'Contact added successfully!');
     }
+
+    function api($id) {
+        $employee = \App\Models\Employees::where('id', $id)->with(['department', 'position'])
+            ->get();
+        return response()->json($employee);
+    }
+
+    function put(Request $request, $id) {
+        $contact = \App\Models\Employees::find($id);
+
+        // dd($request->all());
+
+        $contact->first_name = $request->input('employee_first_name');
+        $contact->last_name = $request->input('employee_last_name');
+        $contact->gender = $request->input('employee_gender');
+        $contact->email = $request->input('employee_email');
+        $contact->department_id = $request->input('employee_department_id');
+        $contact->position_id = $request->input('employee_position_id');
+        $contact->hire_date = $request->input('employee_hired_date');
+        $contact->phone = $request->input('employee_phone');
+        $contact->address = $request->input('employee_address');
+
+        $contact->save();
+        return redirect("/contactlist/".$contact->department_id)->with('success', 'Contact updated successfully!');
+    }
 }
