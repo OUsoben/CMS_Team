@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full overflow-auto">
 
 <head>
     <meta charset="UTF-8" />
@@ -10,12 +10,12 @@
     <script src="https://cdn.jsdelivr.net/npm/flowbite@3.1.2/dist/flowbite.min.js"></script>
 </head>
 
-<body class="bg-gray-100 font-sans">
+<body class="bg-gray-100 font-sans h-full overflow-auto">
 
-    <div class="flex">
+    <div class="flex h-full overflow-auto">
         <!-- Sidebar -->
         <div
-            class="relative flex h-auto w-full max-w-[20rem] flex-col bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
+            class="relative flex h-full overflow-auto w-full max-w-[20rem] flex-col bg-white bg-clip-border p-4 text-gray-700 shadow-xl shadow-blue-gray-900/5">
             <div class="p-4 mb-2">
                 <h5
                     class="block font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
@@ -41,13 +41,13 @@
                     </div>
                     Add Contact
                 </x-nav-link>
-                <x-nav-link href="/editcontact" :active="request()->is('editcontact')">
+                {{-- <x-nav-link href="/editcontact" :active="request()->is('editcontact')">
                     <div class="grid mr-4 place-items-center">
                         <i class="fa-solid fa-pen-to-square"></i>
                         </svg>
                     </div>
                     Edit Contact
-                </x-nav-link>
+                </x-nav-link> --}}
                 <x-nav-link href="/contactlist" :active="request()->is('contactlist')">
                     <div class="grid mr-4 place-items-center">
                         <i class="fa-solid fa-address-book"></i>
@@ -55,9 +55,9 @@
                     Contact List
                     <div class="grid ml-auto place-items-center justify-self-end">
                         <div
-                        class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-full select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
-                        <span>{{ $departmentCount }}</span>
-                      </div>
+                            class="relative grid items-center px-2 py-1 font-sans text-xs font-bold uppercase rounded-full select-none whitespace-nowrap bg-blue-gray-500/20 text-blue-gray-900">
+                            <span>{{ $departmentCount }}</span>
+                        </div>
                     </div>
                 </x-nav-link>
                 <x-nav-link href="/profile" :active="request()->is('profile')">

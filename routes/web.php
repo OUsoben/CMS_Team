@@ -17,6 +17,10 @@ Route::get('/', function () {
 Route::get('/addcontact', [EmployeeController::class, 'index']);
 Route::post('/addcontact', [EmployeeController::class, 'store']);
 
+Route::get('/employees/{id}', [EmployeeController::class, 'api']);
+
+Route::put('/employees/{id}', [EmployeeController::class, 'put']);
+
 Route::post('/adddepartment', function () {
     $department = new \App\Models\Departments();
     $department->name = request('department_name');
@@ -57,7 +61,8 @@ Route::get('/contactlist', function () {
 Route::get('/contactlist/{id}', function ($id) {
     $employees = Employees::with(['department', 'position'])
         ->where('department_id', $id)
-        ->get();
+        ->paginate(4);
+      
 
     return view('employees', [
         'employees' => $employees
