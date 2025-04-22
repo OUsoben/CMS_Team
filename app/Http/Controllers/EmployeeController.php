@@ -51,4 +51,10 @@ class EmployeeController extends Controller
         $contact->save();
         return redirect("/contactlist/".$contact->department_id)->with('success', 'Contact updated successfully!');
     }
+
+    function destroy($id) {
+        $contact = \App\Models\Employees::find($id);
+        $contact->delete();
+        return redirect('/contactlist')->with('success', 'Contact deleted successfully!');
+    }
 }
