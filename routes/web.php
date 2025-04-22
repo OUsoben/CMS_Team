@@ -37,7 +37,7 @@ Route::get('/editcontact', function () {
     return view('contactEdit');
 });
 Route::get('/contactlist', function () {
-    $departments = Departments::get();
+    $departments = Departments::paginate(8);
     // dd($departments);
     $departmentCount = Departments::count();
     return view('contactList', [

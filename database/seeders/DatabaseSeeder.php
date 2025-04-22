@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'Marketing',
             'Sales',
         ];
-        
+
         foreach ($departments as $department) {
             Departments::factory()->create([
                 'name' => $department,
@@ -59,7 +59,7 @@ class DatabaseSeeder extends Seeder
             for ($j = 1; $j < $numOfEmployees + 1; $j++) {
                 Employees::factory()->withDefault($i)->create();
             }
-            
+
         }
     }
 }
