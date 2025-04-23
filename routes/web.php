@@ -21,6 +21,8 @@ Route::get('/employees/{id}', [EmployeeController::class, 'api']);
 
 Route::put('/employees/{id}', [EmployeeController::class, 'put']);
 
+Route::delete('/employees/{id}', [EmployeeController::class, 'destroy']);
+
 Route::post('/adddepartment', function () {
     $department = new \App\Models\Departments();
     $department->name = request('department_name');

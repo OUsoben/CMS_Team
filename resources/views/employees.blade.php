@@ -49,10 +49,16 @@
                                 </td>
                                 <td class="py-3 px-4 border-b line-clamp-">{{ $employee->address }}
                                 <td class="py-3 px-4 border-b">
-                                    <button
-                                    class="edit-task-modal-button bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-md"
-                                    data-modal-toggle="edit-task-modal" for-employee="{{ $employee->id }}">click</button></td>
-                                
+                                    <div class="flex justify-between">
+                                        <button
+                                            class="edit-employee-modal-button bg-green-500 hover:bg-green-700 text-white py-2 px-4 mr-2 rounded-md"
+                                            data-modal-toggle="edit-employee-modal"
+                                            for-employee="{{ $employee->id }}">Edit</button>
+                                        <button
+                                            class="delete-employee-modal-button bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-md"
+                                            data-modal-toggle="delete-employee-modal"
+                                            for-employee="{{ $employee->id }}">Delete</button>
+                                    </div>
                                 </td>
                             </tr>
                         @endforeach
@@ -60,23 +66,29 @@
                 </table>
             </div>
         </div>
-  <div>
-    {{ $employees->links() }}
-  </div>
+        <div>
+            {{ $employees->links() }}
+        </div>
 
 
         @include('contact.contactEdit.modals.edit')
+        @include('contact.contactEdit.modals.delete')
 
 
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
-                const editTaskModalButtons = document.getElementsByClassName('edit-task-modal-button');
-                const editTaskModal = document.getElementById('edit-task-modal');
-                const patchForm = document.getElementById('edit-task-form');
+                const editEmployeeModalButtons = document.getElementsByClassName('edit-employee-modal-button');
+                const editEmployeeModal = document.getElementById('edit-employee-modal');
+                const patchForm = document.getElementById('edit-employee-form');
 
-                for (let i = 0; i < editTaskModalButtons.length; i++) {
-                    editTaskModalButtons[i].addEventListener('click', function () {
+                const deleteEmployeeModalButtons = document.getElementsByClassName('delete-employee-modal-button');
+                const deleteEmployeeModal = document.getElementById('delete-employee-modal');
+                const deleteEmployeeForm = document.getElementById('delete-employee-form');
+                const deleteEmployeeButton = document.getElementById('delete-employee-button');
+
+                for (let i = 0; i < editEmployeeModalButtons.length; i++) {
+                    editEmployeeModalButtons[i].addEventListener('click', function () {
                         const employeeId = this.getAttribute('for-employee');
                         fetch(`/employees/${employeeId}`)
                             .then(response => response.json())
@@ -88,7 +100,7 @@
 
                                 const genderSelect = document.getElementById('employee_gender');
                                 const genderOptions = genderSelect.options;
-                                
+
                                 for (let i = 0; i < genderOptions.length; i++) {
                                     if (genderOptions[i].value === data[0].gender) {
                                         genderOptions[i].selected = true;
@@ -105,23 +117,39 @@
                                 document.getElementById('employee_hired_date').value = data[0].hire_date;
                                 document.getElementById('employee_address').value = data[0].address;
 
-                                console.log(data);
-                                console.log(data[0].id);
                             });
-                        editTaskModal.classList.remove('hidden');
+                        editEmployeeModal.classList.remove('hidden');
                     });
                 }
 
                 window.addEventListener('click', function (event) {
-                    if (event.target === editTaskModal) {
-                        editTaskModal.classList.add('hidden');
+                    if (event.target === editEmployeeModal) {
+                        editEmployeeModal.classList.add('hidden');
+                    } else if (event.target === deleteEmployeeModal) {
+                        deleteEmployeeModal.classList.add('hidden');
                     }
                 });
+
+                for (let i = 0; i < deleteEmployeeModalButtons.length; i++) {
+                    deleteEmployeeModalButtons[i].addEventListener('click', function () {
+                        const employeeId = this.getAttribute('for-employee');
+                        document.getElementById('delete-employee-label').innerHTML = `Are you sure you want to delete employer ID: ${employeeId}`;
+                        deleteEmployeeButton.setAttribute('for-employee', employeeId);
+                        deleteEmployeeModal.classList.remove('hidden');
+                    });
+                }
 
                 patchForm.addEventListener('submit', function (event) {
                     // change this form's action
                     const employeeId = document.getElementById('employee_id').value;
                     patchForm.action = `/employees/${employeeId}`;
+                });
+
+                deleteEmployeeForm.addEventListener('submit', function (event) {
+                    // change this form's action
+                    const employeeId = deleteEmployeeButton.getAttribute('for-employee');
+
+                    deleteEmployeeForm.action = `/employees/${employeeId}`;
                 });
             });
         </script>
