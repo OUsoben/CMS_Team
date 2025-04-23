@@ -66,7 +66,7 @@
                 </table>
             </div>
         </div>
-        <div>
+        <div class= " flex justify-center">
             {{ $employees->links() }}
         </div>
 

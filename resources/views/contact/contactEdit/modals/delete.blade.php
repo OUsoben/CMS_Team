@@ -1,10 +1,13 @@
 <div id="delete-employee-modal" tabindex="-1"
   class="fixed inset-0 z-50 hidden bg-gray-500 bg-opacity-50 flex items-center justify-center" aria-hidden="true">
-  <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700 flex justify-center p-6">
+  <div class="relative bg-white rounded-lg shadow-sm flex justify-center p-6">
     <form action="" class="mx-4 space-y-6 md:w-[70vw] lg:w-[35vw]" id="delete-employee-form" method="POST">
       @csrf
       @method('DELETE')
       <div class="flex flex-col items-center justify-center">
+        <p>
+            Are you sure you want to delete this employee?
+       </p>
         <label class="text-white" id="delete-employee-label" for=""></label>
         <br />
         <div class="flex flex-row gap-x-4">

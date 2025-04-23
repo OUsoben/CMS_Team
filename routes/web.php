@@ -1,20 +1,32 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\ProfileController;
 use App\Models\Departments;
 use App\Models\Employees;
-use Illuminate\Support\Facades\Route;
 use App\Models\Positions;
+use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $employeeCount = Employees::count();
     $departmentCount = Departments::count();
     $positionCount = Positions::count();
+    return view('welcome' ,compact('employeeCount', 'departmentCount', 'positionCount'));
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-    return view('dashboard', compact('employeeCount', 'departmentCount', 'positionCount'));
+
+
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
-# Panha
-Route::get('/addcontact', [EmployeeController::class, 'index']);
+
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('/addcontact', [EmployeeController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::post('/addcontact', [EmployeeController::class, 'store']);
 
 Route::get('/employees/{id}', [EmployeeController::class, 'api']);
@@ -58,13 +70,13 @@ Route::get('/contactlist', function () {
         'departments' => $departments,
         'departmentCount' => $departmentCount
     ]);
-});
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::get('/contactlist/{id}', function ($id) {
     $employees = Employees::with(['department', 'position'])
         ->where('department_id', $id)
-        ->paginate(4);
-      
+        ->paginate(6);
+
 
     return view('employees', [
         'employees' => $employees
@@ -72,7 +84,4 @@ Route::get('/contactlist/{id}', function ($id) {
 });
 
 
-
-Route::get('/profile', function () {
-    return view('profile');
-});
+require __DIR__.'/auth.php';

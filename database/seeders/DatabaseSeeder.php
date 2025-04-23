@@ -21,6 +21,8 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
+            'password' => 'password111',
+
         ]);
 
         // Employees::factory(10)->create();
@@ -53,9 +55,10 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        $numOfEmployees = 5;
+        $numDepartments = 5;
+        $numOfEmployees = 40;
 
-        for ($i = 1; $i < $numOfEmployees + 1; $i++) {
+        for ($i = 1; $i < $numDepartments + 1; $i++) {
             for ($j = 1; $j < $numOfEmployees + 1; $j++) {
                 Employees::factory()->withDefault($i)->create();
             }
