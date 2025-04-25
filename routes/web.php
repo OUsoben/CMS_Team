@@ -76,7 +76,7 @@ Route::get('/contactlist', function () {
 Route::get('/contactlist/{id}', function ($id) {
     $employees = Employees::with(['department', 'position'])
         ->where('department_id', $id)
-        ->paginate(6);
+        ->paginate(5);
 
 
     return view('employees', [

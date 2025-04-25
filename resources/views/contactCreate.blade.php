@@ -29,7 +29,7 @@
                             <label for="first_name" class="block text-sm/6 font-medium text-gray-900">First name</label>
                             <div class="mt-2">
                                 <input type="text" name="first_name" id="first_name" autocomplete="given-name"
-                                    value="Nipanha"
+                                    alue="Nipanha"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
@@ -38,7 +38,7 @@
                             <label for="last_name" class="block text-sm/6 font-medium text-gray-900">Last name</label>
                             <div class="mt-2">
                                 <input type="text" name="last_name" id="last_name" autocomplete="family-name"
-                                    value="Sameth"
+                                    alue="Sameth"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
@@ -173,7 +173,7 @@
                         <div class="sm:col-span-4">
                             <label for="email" class="block text-sm/6 font-medium text-gray-900">Email address</label>
                             <div class="mt-2">
-                                <input id="email" name="email" type="email" autocomplete="email" value={{ $faker->unique()->safeEmail }}
+                                <input id="email" name="email" type="email" autocomplete="email" alue={{ $faker->unique()->safeEmail }}
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
@@ -183,7 +183,7 @@
                                 Number</label>
                             <div class="mt-2">
                                 <input type="text" name="phone_number" id="phone_number" autocomplete="address-level1"
-                                    value="012-345-678"
+                                    alue="012-345-678"
                                     class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1 -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
                             </div>
                         </div>
@@ -219,7 +219,7 @@
                         <label for="address" class="block text-sm/6 font-medium text-gray-900">Address</label>
                         <div class="mt-2">
                             <input id="address" name="address" type="text" autocomplete="address"
-                                value="{{ $faker->streetAddress }}, {{ $faker->city }}, {{ $faker->state }}, {{ $faker->country }}, {{ $faker->postcode }}"
+                                alue="{{ $faker->streetAddress }}, {{ $faker->city }}, {{ $faker->state }}, {{ $faker->country }}, {{ $faker->postcode }}"
                                 class="block w-full rounded-md bg-white px-3 py-1.5 text-base text-gray-900 outline-1
                             -outline-offset-1 outline-gray-300 placeholder:text-gray-400 focus:outline-2
                             focus:-outline-offset-2 focus:outline-indigo-600 sm:text-sm/6">
