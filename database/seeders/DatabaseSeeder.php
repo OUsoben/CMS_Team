@@ -63,12 +63,17 @@ class DatabaseSeeder extends Seeder
             'Analyst',
             'Designer',
             'Salesperson',
+            'Consultant',
             'Engineer',
-            'Biologist',
-            'Accountant',
-            'Teacher',
-            'Translator',
-            'Scientist'
+            'Coordinator',
+            'Specialist',
+            'Technician',
+            'Administrator',
+            'Executive',
+            'Associate',
+            'Intern',
+            'Clerk',
+            'Officer',
         ];
 
         foreach ($positions as $position) {
