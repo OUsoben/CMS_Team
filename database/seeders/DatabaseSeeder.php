@@ -33,6 +33,12 @@ class DatabaseSeeder extends Seeder
             'Finance',
             'Marketing',
             'Sales',
+            'Engineering',
+            'Biology',
+            'Accounting',
+            'Khmer',
+            'Japanese',
+            'Science'
         ];
 
         foreach ($departments as $department) {
@@ -47,6 +53,12 @@ class DatabaseSeeder extends Seeder
             'Analyst',
             'Designer',
             'Salesperson',
+            'Engineer',
+            'Biologist',
+            'Accountant',
+            'Teacher',
+            'Translator',
+            'Scientist'
         ];
 
         foreach ($positions as $position) {
@@ -55,7 +67,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        $numDepartments = 5;
+        $numDepartments = count($departments);
         $numOfEmployees = 40;
 
         for ($i = 1; $i < $numDepartments + 1; $i++) {

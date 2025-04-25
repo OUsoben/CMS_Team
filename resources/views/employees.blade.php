@@ -108,10 +108,14 @@
                                     }
                                 }
                                 // document.getElementById('employee_department').value = data[0].department.name;
-                                document.getElementById('employee_department').value = data[0].department.name;
-                                document.getElementById('employee_department_id').value = data[0].department_id;
-                                document.getElementById('employee_position').value = data[0].position.title;
-                                document.getElementById('employee_position_id').value = data[0].position_id;
+                                // document.getElementById('employee_department').value = data[0].department.name;
+                                // document.getElementById('employee_department_id').value = data[0].department_id;
+                                // document.getElementById('employee_position').value = data[0].position.title;
+                                // document.getElementById('employee_position_id').value = data[0].position_id;
+
+                                document.getElementById('department_search').value = data[0].department.name;
+                                document.getElementById('position_search').value = data[0].position.title;
+
                                 document.getElementById('employee_email').value = data[0].email;
                                 document.getElementById('employee_phone').value = data[0].phone;
                                 document.getElementById('employee_hired_date').value = data[0].hire_date;
