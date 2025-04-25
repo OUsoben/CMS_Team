@@ -16,8 +16,9 @@ class Departments extends Model
         'name',
 
     ];
+
     public function employees()
     {
-        // return $this->hasMany(Employees::class);
+        return $this->hasMany(\App\Models\Employees::class, 'department_id');
     }
 }

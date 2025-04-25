@@ -33,6 +33,16 @@ class DatabaseSeeder extends Seeder
             'Finance',
             'Marketing',
             'Sales',
+            'Customer Service',
+            'Research and Development',
+            'Legal',
+            'Operations',
+            'Administration',
+            'Logistics',
+            'Quality Assurance',
+            'Public Relations',
+            'Product Management',
+            'Business Development',
         ];
 
         foreach ($departments as $department) {
@@ -55,7 +65,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-        $numDepartments = 5;
+        $numDepartments = 15;
         $numOfEmployees = 40;
 
         for ($i = 1; $i < $numDepartments + 1; $i++) {

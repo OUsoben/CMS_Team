@@ -63,9 +63,10 @@ Route::get('/editcontact', function () {
     ]);
 });
 Route::get('/contactlist', function () {
-    $departments = Departments::paginate(8);
-    // dd($departments);
+    // Use withCount to count employees for each department
+    $departments = Departments::withCount('employees')->paginate(8);
     $departmentCount = Departments::count();
+
     return view('contactList', [
         'departments' => $departments,
         'departmentCount' => $departmentCount
