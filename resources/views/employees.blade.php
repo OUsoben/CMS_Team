@@ -53,11 +53,11 @@
                                         <button
                                             class="edit-employee-modal-button bg-green-500 hover:bg-green-700 text-white py-2 px-4 mr-2 rounded-md"
                                             data-modal-toggle="edit-employee-modal"
-                                            for-employee="{{ $employee->id }}">Edit</button>
+                                            for-employee="{{ $employee->id }}"><i class="fa-solid fa-pen-to-square"></i></button>
                                         <button
                                             class="delete-employee-modal-button bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-md"
                                             data-modal-toggle="delete-employee-modal"
-                                            for-employee="{{ $employee->id }}">Delete</button>
+                                            for-employee="{{ $employee->id }}"><i class="fa-solid fa-trash"></i></button>
                                     </div>
                                 </td>
                             </tr>
