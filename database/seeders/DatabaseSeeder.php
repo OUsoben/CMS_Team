@@ -33,7 +33,6 @@ class DatabaseSeeder extends Seeder
             'Finance',
             'Marketing',
             'Sales',
-<<<<<<< HEAD
             'Customer Service',
             'Research and Development',
             'Legal',
@@ -44,14 +43,12 @@ class DatabaseSeeder extends Seeder
             'Public Relations',
             'Product Management',
             'Business Development',
-=======
             'Engineering',
             'Biology',
             'Accounting',
             'Khmer',
             'Japanese',
             'Science'
->>>>>>> 7dda2bee4840e90daaf1f46ec361b65ffb355651
         ];
 
         foreach ($departments as $department) {
@@ -80,11 +77,7 @@ class DatabaseSeeder extends Seeder
             ]);
         }
 
-<<<<<<< HEAD
-        $numDepartments = 15;
-=======
         $numDepartments = count($departments);
->>>>>>> 7dda2bee4840e90daaf1f46ec361b65ffb355651
         $numOfEmployees = 40;
 
         for ($i = 1; $i < $numDepartments + 1; $i++) {
