@@ -2,15 +2,24 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Departments;
+use App\Models\Positions;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
-    function index() {
-        return view('contactCreate');
+    function index()
+    {
+        $departments = Departments::all();
+        $positions = Positions::all();
+        return view('contactCreate', [
+            'departments' => $departments,
+            'positions' => $positions,
+        ]);
     }
 
-    function store(Request $request) {
+    function store(Request $request)
+    {
         $contact = new \App\Models\Employees();
         $contact->first_name = $request->input('first_name');
         $contact->last_name = $request->input('last_name');
@@ -27,13 +36,15 @@ class EmployeeController extends Controller
         return redirect('/contactlist')->with('success', 'Contact added successfully!');
     }
 
-    function api($id) {
+    function api($id)
+    {
         $employee = \App\Models\Employees::where('id', $id)->with(['department', 'position'])
             ->get();
         return response()->json($employee);
     }
 
-    function put(Request $request, $id) {
+    function put(Request $request, $id)
+    {
         $contact = \App\Models\Employees::find($id);
 
         // dd($request->all());
@@ -57,13 +68,14 @@ class EmployeeController extends Controller
         $contact->address = $request->input('employee_address');
 
         $contact->save();
-        return redirect("/contactlist/".$contact->department_id)->with('success', 'Contact updated successfully!');
+        return redirect("/contactlist/" . $contact->department_id)->with('success', 'Contact updated successfully!');
     }
 
-    function destroy($id) {
+    function destroy($id)
+    {
         $contact = \App\Models\Employees::find($id);
         $contact->delete();
-        return redirect("/contactlist/".$contact->department_id)->with('success', 'Contact Deleted successfully!');
+        return redirect("/contactlist/" . $contact->department_id)->with('success', 'Contact Deleted successfully!');
 
     }
 }
