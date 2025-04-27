@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\EmployeesController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Departments;
 use App\Models\Employees;
@@ -73,16 +74,7 @@ Route::get('/contactlist', function () {
     ]);
 })->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/contactlist/{id}', function ($id) {
-    $employees = Employees::with(['department', 'position'])
-        ->where('department_id', $id)
-        ->paginate(5);
-
-
-    return view('employees', [
-        'employees' => $employees
-    ]);
-});
+Route::get('/contactlist/{id}', [EmployeesController::class, 'index']);
 
 
 require __DIR__.'/auth.php';

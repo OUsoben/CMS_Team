@@ -66,4 +66,6 @@ class EmployeeController extends Controller
         return redirect("/contactlist/".$contact->department_id)->with('success', 'Contact Deleted successfully!');
 
     }
+
+
 }
