@@ -1,5 +1,5 @@
 <div id="add{{ ucfirst($name) }}Modal"
-  class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center">
+  class="fixed inset-0 z-50 hidden bg-gray-800 bg-opacity-50 flex items-center justify-center !mt-0">
   <div class="bg-white rounded-lg shadow-lg w-1/3">
     <div class="px-4 py-3 border-b border-gray-300 flex justify-between items-center">
       <h2 class="text-lg font-medium text-gray-900">Add a {{ $name }}</h2>
