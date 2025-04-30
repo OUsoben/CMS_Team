@@ -8,12 +8,12 @@
         <p>
             Are you sure you want to delete this employee?
        </p>
-        <label class="text-white" id="delete-employee-label" for=""></label>
+        <label class="text-black" id="delete-employee-label" for=""></label>
         <br />
         <div class="flex flex-row gap-x-4">
           <button id="delete-employee-button" class="bg-red-500 hover:bg-red-700 text-white py-2 px-4 rounded-md"
             type="submit" for-employee="">Delete</button>
-          <button id="cancel-employee-button" type="button"
+          <button id="delete-cancel-employee-button" type="button"
             class="bg-white hover:bg-gray-300 text-black py-2 px-4 rounded-md">Cancel</button>
         </div>
       </div>
